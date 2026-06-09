@@ -56,12 +56,13 @@ export default function StatsSection() {
   ];
 
   return (
+
     <section className="relative min-h-[600px] w-full bg-black text-white flex flex-col justify-end items-center overflow-hidden pb-16 pt-32">
       {/* The 'globel' Background Image Layer with Glowing Effect */}
       <div
         className="absolute inset-0 bg-bottom bg-no-repeat bg-contain z-0 mix-blend-screen scale-110 pointer-events-none"
         style={{
-          backgroundImage: "url('/globel.png')",
+          backgroundImage: "url('/images/globel.png')",
           maskImage:
             "linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
           WebkitMaskImage:
@@ -102,7 +103,7 @@ export default function StatsSection() {
                 </div>
               </div>
             </div>
-          ))}
+          ))} 
         </div>
       </div>
     </section>
