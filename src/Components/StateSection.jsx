@@ -1,17 +1,13 @@
 /** @format */
 
 import React from "react";
-import {
-  FolderMagnifier,
-  Archive,
-  StarFill,
-} from "@gravity-ui/icons";
+import { FolderMagnifier, Archive, StarFill } from "@gravity-ui/icons";
 
 export default function StatsSection() {
   const stats = [
     {
       id: 1,
-      icon: <FolderMagnifier   className="w-6 h-6 text-slate-400" />,
+      icon: <FolderMagnifier className="w-6 h-6 text-slate-400" />,
       number: "50K",
       label: "Active Jobs",
     },
@@ -56,19 +52,24 @@ export default function StatsSection() {
   ];
 
   return (
-
-    <section className="relative min-h-[600px] w-full bg-black text-white flex flex-col justify-end items-center overflow-hidden pb-16 pt-32">
-      {/* The 'globel' Background Image Layer with Glowing Effect */}
+    <section className="relative overflow-hidden bg-black py-28 text-white">
+      {/* Globe background: masked image for better control and responsiveness */}
       <div
-        className="absolute inset-0 bg-bottom bg-no-repeat bg-contain z-0 mix-blend-screen scale-110 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none flex items-end justify-center"
         style={{
-          backgroundImage: "url('/images/globel.png')",
           maskImage:
             "linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
           WebkitMaskImage:
             "linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
         }}
-      />
+      >
+        <img
+          src="/images/globe.png"
+          alt="globe background"
+          className="w-[70%] md:w-[55%] lg:w-[45%] max-w-[900px] opacity-30 mix-blend-screen scale-105 pointer-events-none transform-gpu"
+          style={{ filter: "blur(6px)" }}
+        />
+      </div>
 
       {/* Radial Blue Glow behind the Globe to recreate the exact image ambiance */}
       <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-600/20 rounded-full blur-[120px] z-0 pointer-events-none" />
@@ -103,7 +104,7 @@ export default function StatsSection() {
                 </div>
               </div>
             </div>
-          ))} 
+          ))}
         </div>
       </div>
     </section>
