@@ -11,6 +11,7 @@ const db = client.db(process.env.AUTH_DB_NAME);
 export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
+    autoSignIn: false,
   },
 
   database: mongodbAdapter(db, {

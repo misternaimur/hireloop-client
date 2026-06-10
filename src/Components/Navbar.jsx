@@ -4,7 +4,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@heroui/react";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,12 +51,12 @@ export default function Navbar() {
               Sign In
             </Link>
 
-            <Button
-              radius="lg"
-              className="bg-gradient-to-r from-violet-600 to-indigo-500 text-white"
+            <Link
+              href="/auth/signup"
+              className="rounded-lg bg-linear-to-r from-violet-600 to-indigo-500 px-4 py-2 text-white transition hover:opacity-90"
             >
               Get Started
-            </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -111,12 +110,12 @@ export default function Navbar() {
                 Sign In
               </Link>
 
-              <Button
-                radius="lg"
-                className="bg-gradient-to-r from-violet-600 to-indigo-500 text-white"
+              <Link
+                href="/auth/signup"
+                className="rounded-lg bg-linear-to-r from-violet-600 to-indigo-500 px-4 py-2 text-center text-white transition hover:opacity-90"
               >
                 Get Started
-              </Button>
+              </Link>
             </div>
           </div>
         )}
@@ -124,4 +123,3 @@ export default function Navbar() {
     </header>
   );
 }
-  
