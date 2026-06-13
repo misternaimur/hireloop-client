@@ -7,6 +7,7 @@ import React from "react";
 import { Input, Button, Chip } from "@heroui/react";
 // Gravity UI Icons
 import { Magnifier, Pin, Briefcase } from "@gravity-ui/icons";
+import ScrambleText from "./animation/ScrambleText";
 
 export default function JobHeroSection() {
   return (
@@ -21,8 +22,9 @@ export default function JobHeroSection() {
       </div>
 
       {/* 2. Heading & Subtitle Description */}
+
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white max-w-4xl text-center mb-5 leading-[1.15]">
-        Find Your Dream Job Today
+        <ScrambleText text="Find Your Dream Job Today" speed={25} />
       </h1>
 
       <p className="text-slate-400 text-sm sm:text-base md:text-lg max-w-2xl text-center mb-12 leading-relaxed font-normal">
@@ -34,7 +36,7 @@ export default function JobHeroSection() {
       <div className="w-full max-w-3xl bg-zinc-900/80 border border-zinc-800/70 rounded-full p-2 flex flex-col sm:flex-row items-center gap-2 sm:gap-0 shadow-2xl backdrop-blur-xl mb-8">
         {/* Job Title Input */}
         <div className="w-full flex items-center px-3 gap-2">
-          <Magnifier className="w-5 h-5 text-zinc-500 flex-shrink-0" />
+          <Magnifier className="w-5 h-5 text-zinc-500 shrink-0" />
           <Input
             type="text"
             placeholder="Job title, skill or company"
@@ -44,11 +46,11 @@ export default function JobHeroSection() {
         </div>
 
         {/* Vertical Divider (Hidden on stack/mobile screens) */}
-        <div className="hidden sm:block h-6 w-[1px] bg-zinc-800 mx-2" />
+        <div className="hidden sm:block h-6 w-px bg-zinc-800 mx-2" />
 
         {/* Location Input */}
         <div className="w-full flex items-center px-3 gap-2">
-          <Pin className="w-5 h-5 text-zinc-500 flex-shrink-0" />
+          <Pin className="w-5 h-5 text-zinc-500 shrink-0" />
           <Input
             type="text"
             placeholder="Location or Remote"
@@ -61,7 +63,7 @@ export default function JobHeroSection() {
         <Button
           isIconOnly
           aria-label="Search"
-          className="w-12 h-12 rounded-full bg-indigo-600 hover:bg-indigo-500 transition-all duration-200 shadow-md shadow-indigo-600/20 flex-shrink-0 flex items-center justify-center sm:ml-auto"
+          className="w-12 h-12 rounded-full bg-indigo-600 hover:bg-indigo-500 transition-all duration-200 shadow-md shadow-indigo-600/20 shrink-0 flex items-center justify-center sm:ml-auto"
         >
           <Magnifier className="w-5 h-5 text-white" />
         </Button>

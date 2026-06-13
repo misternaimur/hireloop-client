@@ -1,6 +1,8 @@
 /** @format */
+"use client";
 
 import React from "react";
+import Image from "next/image";
 import { FolderMagnifier, Archive, StarFill } from "@gravity-ui/icons";
 import { motion } from "motion/react";
 
@@ -64,16 +66,18 @@ export default function StatsSection() {
             "linear-gradient(to top, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%)",
         }}
       >
-        <img
+        <Image
           src="/images/globe.png"
           alt="globe background"
-          className="w-[70%] md:w-[55%] lg:w-[45%] max-w-[900px] opacity-30 mix-blend-screen scale-105 pointer-events-none transform-gpu"
+          width={900}
+          height={900}
+          className="w-[70%] md:w-[55%] lg:w-[45%] max-w-225 opacity-30 mix-blend-screen scale-105 pointer-events-none transform-gpu"
           style={{ filter: "blur(6px)" }}
         />
       </div>
 
       {/* Radial Blue Glow behind the Globe to recreate the exact image ambiance */}
-      <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-600/20 rounded-full blur-[120px] z-0 pointer-events-none" />
+      <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-150 h-100 bg-blue-600/20 rounded-full blur-[120px] z-0 pointer-events-none" />
 
       {/* Main Content Area */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 text-center">
@@ -84,13 +88,13 @@ export default function StatsSection() {
           <br />
           find their dream positions.
         </h2>
-
+        <motion.p animate={{ rotate: 340 }}>Helloo</motion.p>
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
           {stats.map((stat) => (
             <div
               key={stat.id}
-              className="bg-[#0A0A0B]/80 border border-neutral-900 rounded-2xl p-8 flex flex-col justify-between min-h-[200px] backdrop-blur-md transition-all duration-300 hover:border-neutral-800 hover:bg-[#0D0D0F]"
+              className="bg-[#0A0A0B]/80 border border-neutral-900 rounded-2xl p-8 flex flex-col justify-between min-h-50 backdrop-blur-md transition-all duration-300 hover:border-neutral-800 hover:bg-[#0D0D0F]"
             >
               {/* Icon Container */}
               <div className="mb-8">{stat.icon}</div>
