@@ -4,9 +4,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Button } from "@heroui/react";
+import { useSession } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { data: session, isPending } = useSession();
+
+  const user = session?.user;
 
   const navLinks = [
     {
@@ -23,6 +30,19 @@ export default function Navbar() {
     },
   ];
 
+  const handleSignOut = async () => {
+    try {
+      await authClient.signOut();
+      window.location.reload();
+    } catch (error) {
+      console.error("Sign out failed:", error);
+    }
+  };
+
+  if (isPending) {
+    return null;
+  }
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
       <div className="mx-auto max-w-7xl">
@@ -34,12 +54,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="ml-auto hidden lg:flex items-center gap-8">
+          <div className="ml-auto hidden items-center gap-8 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm text-white/80 hover:text-white transition"
+                className="text-sm text-white/80 transition hover:text-white"
               >
                 {link.name}
               </Link>
@@ -47,16 +67,33 @@ export default function Navbar() {
 
             <div className="h-5 w-px bg-white/20" />
 
-            <Link href="/signin" className="text-violet-500 font-medium">
-              Sign In
-            </Link>
+            {user ? (
+              <>
+                <span className="text-sm text-white">
+                  Hi, {user.name || "User"}
+                </span>
 
-            <Link
-              href="/auth/signup"
-              className="rounded-lg bg-linear-to-r from-violet-600 to-indigo-500 px-4 py-2 text-white transition hover:opacity-90"
-            >
-              Get Started
-            </Link>
+                <Button variant="ghost" onClick={handleSignOut}>
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/auth/signin"
+                  className="font-medium text-violet-500"
+                >
+                  Sign In
+                </Link>
+
+                <Link
+                  href="/auth/signup"
+                  className="rounded-lg bg-linear-to-r from-violet-600 to-indigo-500 px-4 py-2 text-white transition hover:opacity-90"
+                >
+                  Get Started
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -106,16 +143,31 @@ export default function Navbar() {
 
               <div className="h-px bg-white/10" />
 
-              <Link href="/signin" className="text-violet-500 font-medium">
-                Sign In
-              </Link>
+              {user ? (
+                <>
+                  <p className="text-white">Hi, {user.name || "User"} 👋</p>
 
-              <Link
-                href="/auth/signup"
-                className="rounded-lg bg-linear-to-r from-violet-600 to-indigo-500 px-4 py-2 text-center text-white transition hover:opacity-90"
-              >
-                Get Started
-              </Link>
+                  <Button variant="ghost" onClick={handleSignOut}>
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/auth/signin"
+                    className="font-medium text-violet-500"
+                  >
+                    Sign In
+                  </Link>
+
+                  <Link
+                    href="/auth/signup"
+                    className="rounded-lg bg-linear-to-r from-violet-600 to-indigo-500 px-4 py-2 text-center text-white transition hover:opacity-90"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}
